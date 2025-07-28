@@ -1,35 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+   <TestReactCompilerProp myprop='hello' />
   )
 }
+
+function someFunction(name: string) {
+  console.log(name);
+  return { count: 4 };
+}
+
+export function TestReactCompilerProp(
+  { myprop }: { myprop: string }
+) {
+
+  // uncomment this line to verify the playground does report linting errors:
+  // myprop.a = 1 // Error: this value cannot be modified
+
+  const handler = () => {
+    const result = someFunction(myprop); // pass the prop
+
+    // mutate the result
+    result.count = 1;
+    // above line causes linting error locally with 0.0.0-experimental-2db0664-20250725 but no error in playground
+  };
+
+  return <button onClick={handler}>label</button>;
+}
+
 
 export default App
