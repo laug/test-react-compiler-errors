@@ -1,5 +1,4 @@
 import js from '@eslint/js'
-import reactCompiler from "eslint-plugin-react-compiler"
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import { globalIgnores } from 'eslint/config'
@@ -13,7 +12,7 @@ export default tseslint.config([
     extends: [
       js.configs.recommended,
       tseslint.configs.recommended,
-      reactHooks.configs['recommended-latest'],
+      reactHooks.configs.recommended,
       reactRefresh.configs.vite,
     ],
     languageOptions: {
@@ -21,5 +20,4 @@ export default tseslint.config([
       globals: globals.browser,
     },
   },
-  reactCompiler.configs.recommended,
 ])
