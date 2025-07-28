@@ -1,5 +1,5 @@
 
-function App() {
+export default function App() {
   return (
    <TestReactCompilerProp myprop='hello' />
   )
@@ -27,6 +27,3 @@ export function TestReactCompilerProp(
 
   return <button onClick={handler}>label</button>;
 }
-
-
-export default App
